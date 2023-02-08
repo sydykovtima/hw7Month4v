@@ -26,4 +26,4 @@ struct TypeOfOrder {
     let colorForText: UIColor
     let backGroundColorForText: UIColor
 }
-
+ 
