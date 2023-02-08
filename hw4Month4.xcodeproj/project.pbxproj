@@ -136,6 +136,9 @@
 		04B2B8202990FB75002F2DDD /* hw4Month4 */ = {
 			isa = PBXGroup;
 			children = (
+				043D7B6129926FC900B7E2DA /* App */,
+				04B2B8532990FB94002F2DDD /* Controllers */,
+				04B2B8522990FB8B002F2DDD /* Views */,
 				04B2B8512990FB84002F2DDD /* Models */,
 				043D7B5F29926F8E00B7E2DA /* Resourses */,
 			);
@@ -164,7 +167,6 @@
 			children = (
 				043D7B5D29926D8A00B7E2DA /* Protocols.swift */,
 				043957A629911673008B1D44 /* ProductInfo.swift */,
-				04B2B8522990FB8B002F2DDD /* Views */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -179,7 +181,6 @@
 				045EB1E62990FC8000E3F70A /* ProductTableViewCell.swift */,
 				045EB1EA2990FCCA00E3F70A /* CategoryCollectionViewCell.swift */,
 				045EB1E82990FCA100E3F70A /* OrderTypeCollectonViewCell.swift */,
-				04B2B8532990FB94002F2DDD /* Controllers */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,7 +190,6 @@
 			children = (
 				043957A429911638008B1D44 /* SecondViewController.swift */,
 				04B2B8252990FB75002F2DDD /* ViewController.swift */,
-				043D7B6129926FC900B7E2DA /* App */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
