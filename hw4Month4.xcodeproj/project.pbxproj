@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041556CD2994FB8800C1FE26 /* CreateProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041556CC2994FB8800C1FE26 /* CreateProducts.swift */; };
+		041556D02994FF2B00C1FE26 /* CreateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041556CE2994FF2B00C1FE26 /* CreateCollectionViewCell.swift */; };
+		041556D12994FF2B00C1FE26 /* CreateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041556CF2994FF2B00C1FE26 /* CreateCollectionViewCell.xib */; };
+		041556D32995006100C1FE26 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041556D22995006100C1FE26 /* NetworkLayer.swift */; };
 		043957A529911638008B1D44 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043957A429911638008B1D44 /* SecondViewController.swift */; };
 		043957A729911673008B1D44 /* ProductInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043957A629911673008B1D44 /* ProductInfo.swift */; };
 		043D7B5E29926D8A00B7E2DA /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D7B5D29926D8A00B7E2DA /* Protocols.swift */; };
@@ -45,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041556CC2994FB8800C1FE26 /* CreateProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProducts.swift; sourceTree = "<group>"; };
+		041556CE2994FF2B00C1FE26 /* CreateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCollectionViewCell.swift; sourceTree = "<group>"; };
+		041556CF2994FF2B00C1FE26 /* CreateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateCollectionViewCell.xib; sourceTree = "<group>"; };
+		041556D22995006100C1FE26 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
 		043957A429911638008B1D44 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		043957A629911673008B1D44 /* ProductInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfo.swift; sourceTree = "<group>"; };
 		043D7B5D29926D8A00B7E2DA /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
@@ -166,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				043D7B5D29926D8A00B7E2DA /* Protocols.swift */,
+				041556CC2994FB8800C1FE26 /* CreateProducts.swift */,
+				041556D22995006100C1FE26 /* NetworkLayer.swift */,
 				043957A629911673008B1D44 /* ProductInfo.swift */,
 			);
 			path = Models;
@@ -178,9 +188,11 @@
 				045EB1E42990FC6100E3F70A /* OrderTypeCollectionViewCell.xib */,
 				045EB1E22990FC1F00E3F70A /* CategoryCollectionViewCell.xib */,
 				045EB1E02990FC0800E3F70A /* ProductTableViewCell.xib */,
+				041556CF2994FF2B00C1FE26 /* CreateCollectionViewCell.xib */,
 				045EB1E62990FC8000E3F70A /* ProductTableViewCell.swift */,
 				045EB1EA2990FCCA00E3F70A /* CategoryCollectionViewCell.swift */,
 				045EB1E82990FCA100E3F70A /* OrderTypeCollectonViewCell.swift */,
+				041556CE2994FF2B00C1FE26 /* CreateCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -299,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B2B82E2990FB76002F2DDD /* LaunchScreen.storyboard in Resources */,
+				041556D12994FF2B00C1FE26 /* CreateCollectionViewCell.xib in Resources */,
 				045EB1E52990FC6100E3F70A /* OrderTypeCollectionViewCell.xib in Resources */,
 				045EB1E32990FC1F00E3F70A /* CategoryCollectionViewCell.xib in Resources */,
 				045EB1E12990FC0800E3F70A /* ProductTableViewCell.xib in Resources */,
@@ -329,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B2B8262990FB75002F2DDD /* ViewController.swift in Sources */,
+				041556D32995006100C1FE26 /* NetworkLayer.swift in Sources */,
 				043957A729911673008B1D44 /* ProductInfo.swift in Sources */,
 				045EB1E72990FC8000E3F70A /* ProductTableViewCell.swift in Sources */,
 				04B2B8222990FB75002F2DDD /* AppDelegate.swift in Sources */,
@@ -336,6 +350,8 @@
 				043957A529911638008B1D44 /* SecondViewController.swift in Sources */,
 				045EB1EB2990FCCA00E3F70A /* CategoryCollectionViewCell.swift in Sources */,
 				043D7B5E29926D8A00B7E2DA /* Protocols.swift in Sources */,
+				041556CD2994FB8800C1FE26 /* CreateProducts.swift in Sources */,
+				041556D02994FF2B00C1FE26 /* CreateCollectionViewCell.swift in Sources */,
 				04B2B8242990FB75002F2DDD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

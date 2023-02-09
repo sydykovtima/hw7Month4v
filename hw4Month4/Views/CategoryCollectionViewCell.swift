@@ -21,7 +21,32 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     }
 }
 
-struct Category {
+let categoryJSON = """
+[{
+        "imagesCategory": "Take aways image",
+        "name": "Take aways"
+},
+{
+        "imagesCategory": "Grocery Image",
+        "name": "Grocery"
+},
+{
+        "imagesCategory": "Convience Image",
+        "name": "Convience"
+},
+{
+        "imagesCategory": "Pharmacy Image",
+        "name": "Pharmacy"
+}
+]
+"""
+
+
+
+struct Category: Decodable {
     let imagesCategory: String
     let name: String
 }
+
+
+

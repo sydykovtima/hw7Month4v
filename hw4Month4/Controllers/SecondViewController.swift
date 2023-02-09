@@ -14,46 +14,44 @@ import UIKit
 
 class SecondViewController: UIViewController {
     
-    @IBOutlet weak var tableViewlibrary: UITableView!
-    @IBOutlet weak var Button: UIButton!
-    @IBOutlet weak var createProduct: UILabel!
+    @IBOutlet weak var createProductsCollectionView: UICollectionView!
     
-    let productsinfo = Products().printAllInfo()
-    var createSelectionsDelegate: CreateSelections?
+//    private var products: [CreateProducts] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableViewlibrary.delegate = self
-        tableViewlibrary.dataSource = self
-        Uinib()
+//        configureCV()
+//        fetchProducts()
     }
-    private func Uinib() {
-        tableViewlibrary.register(UITableViewCell.self, forCellReuseIdentifier: "name_cell")
-    }
-}
-
-extension SecondViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "name_cell", for: indexPath)
-        print("cell created")
-        cell.textLabel?.text = "\(String(describing: productsinfo[indexPath.row].titleSub))"
-        cell.textLabel?.text = "\(String(describing: productsinfo[indexPath.row].brendProducts) )"
-        cell.textLabel?.text = "\(String(describing: productsinfo[indexPath.row].categoryProducts))"
-        cell.textLabel?.text = "\(String(describing: productsinfo[indexPath.row].createCostLable))"
-        cell.textLabel?.text = "\(String(describing: productsinfo[indexPath.row].createInfoProducts))"
-        return cell
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return productsinfo.count
-    }
-}
-
-extension SecondViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.dismiss(animated: true)
+//    private func configureCV() {
+//        createProductsCollectionView.dataSource = self
+//        createProductsCollectionView.dataSource = self
+//        createProductsCollectionView.register(UINib(nibName: CreateCollectionViewCell.reuseId, bundle: nil), forCellWithReuseIdentifier: CreateCollectionViewCell.reuseId)
+//    }
+//    private func fetchProducts() {
+//        do { products = try NetworkLayer.shared.fetchProducts() ?? []
+//        createProductsCollectionView.reloadData()
+//    }catch {
+//        print("error \(error.localizedDescription)")
+//        }
+//
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-        
-}
+//}
+
+//extension SecondViewController: UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//       return products.count
+//    }
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CreateCollectionViewCell.reuseId, for: indexPath) as! CreateCollectionViewCell
+//        let model = products[indexPath.row]
+//        cell.display(item: model)
+//        return cell
+//    }
+//}
+//extension SecondViewController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        .init(width: collectionView.frame.width, height: 700)
+//    }
+//}
+//

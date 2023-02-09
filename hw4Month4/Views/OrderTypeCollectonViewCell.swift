@@ -12,19 +12,44 @@ class OrderTypeCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifierForOrderType = String(describing: TypeOfOrder.self)
     @IBOutlet private weak var typeOfOrderLable: UILabel!
     @IBOutlet private weak var deliveryImage: UIImageView!
+    
     func display(item: TypeOfOrder) {
         typeOfOrderLable.text = item.orderOfType
         typeOfOrderLable.layer.borderColor = UIColor.lightGray.cgColor
         typeOfOrderLable.layer.cornerRadius = 20
         typeOfOrderLable.layer.borderWidth = 2
-        typeOfOrderLable.textColor = item.colorForText
+//        typeOfOrderLable.textColor = item.orderOfType
     }
 }
 
-struct TypeOfOrder {
+let orderTypeJSON = """
+[{
+        "orderOfType": "Delivery",
+        "colorForText": "",
+        "backGroundColorForText": ""
+},
+{
+        "orderOfType": "Pick Up",
+        "colorForText": "",
+        "backGroundColorForText": ""
+},
+{
+        "orderOfType": "Catering",
+        "colorForText": "",
+        "backGroundColorForText": ""
+},
+{
+        "orderOfType": "Curbside",
+        "colorForText": "",
+        "backGroundColorForText": ""
+}
+]
+"""
+
+struct TypeOfOrder: Decodable {
     let orderOfType: String
-    let colorForText: UIColor
-    let backGroundColorForText: UIColor
+//    let colorForText: UIColor
+//    let backGroundColorForText: UIColor
 }
  
 
