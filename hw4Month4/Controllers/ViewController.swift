@@ -115,7 +115,8 @@ class ViewController: UIViewController {
     }
     
     private func showError(with message: Error) {
-        let alert = UIAlertController(title: "Error", message: message.localizedDescription, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error", message:
+        message.localizedDescription, preferredStyle: .alert)
         alert.addAction(.init(title: "Okay", style: .cancel))
         present(alert, animated: true)
     }
