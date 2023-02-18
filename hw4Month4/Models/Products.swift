@@ -34,7 +34,6 @@ let productJSON = """
 ]
 """
 
-
 struct Product: Decodable {
     let productsImageView: String
     let nameProducts: String
