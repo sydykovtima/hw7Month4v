@@ -7,63 +7,73 @@
 
 import UIKit
 
-//protocol ImageCellDelegate {
-//    func didselect()
-//}
-//
-//
-//
-//class Image {
-//    fileprivate var imageName: String
-//    fileprivate var imageData: Data
-//
-//    var name: String {
-//        return imageName
-//    }
-//
-//    init(name: String, data: Data) {
-//        imageName = name
-//        imageData = data
-//    }
-//
-//    // persistence
-//    func save(to url: URL) throws {
-//        try self.imageData.write(to: url)
-//    }
-//
-//    convenience init(name: String, contentsOf url: URL) throws {
-//        let data = try Data(contentsOf: url)
-//        self.init(name: name, data: data)
-//    }
-//
-//    // compression
-//    convenience init?(named name: String, data: Data, compressionQuality: Double) {
-//        guard let image = UIImage.init(data: data) else { return nil }
-//        guard let jpegData = image.jpegData(compressionQuality: CGFloat(compressionQuality)) else { return nil }
-//        self.init(name: name, data: jpegData)
-//    }
-//
-//    // BASE64 encoding
-//    var base64Encoded: String {
-//        return imageData.base64EncodedString()
-//    }
-//}
-//
-//// Test
-//var image = Image(name: "Pic", data: Data(repeating: 0, count: 100))
-//print(image.base64Encoded)
-//
-//do {
-//    // persist image
-//    let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
-//    let imageURL = documentDirectory.appendingPathComponent("MyImage")
-//    try image.save(to: imageURL)
-//    print("Image saved successfully to path \(imageURL)")
-//
-//    // load image from persistence
-//    let storedImage = try Image.init(name: "MyRestoredImage", contentsOf: imageURL)
-//    print("Image loaded successfully from path \(imageURL)")
-//} catch {
-//    print(error)
-//}
-//
+
+let productJSON = """
+[{
+        "productsImageView": "Burger Craze",
+        "nameProducts": "Burger Craze",
+        "openClose": "Open ",
+        "delivery": "Free",
+        "madeOnTheWord": "American: Burgers",
+        "time": "1.5 km",
+        "cost": "minimum 10$",
+        "rate": "4.6(601)",
+        "distance": "15-20 min"
+},
+{
+        "productsImageView": "Vegetarian Pizza",
+        "nameProducts": "Vegetarian Pizza",
+        "openClose": "Open",
+        "delivery": "Free",
+        "madeOnTheWord": "American: Pizza",
+        "time": "1.5 km",
+        "cost": "minimum 10$",
+        "rate": "4.6(601)",
+        "distance": "15-20 min"
+}
+]
+"""
+
+
+struct Product: Decodable {
+    let productsImageView: String
+    let nameProducts: String
+    let openClose: String
+    let delivery: String
+    let madeOnTheWord: String
+    let time: String
+    let cost: String
+    let rate: String
+    let distance: String
+    enum CodingKeys: CodingKey {
+        case productsImageView
+        case nameProducts
+        case openClose
+        case delivery
+        case madeOnTheWord
+        case time
+        case cost
+        case rate
+        case distance
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.productsImageView = try container.decode(String.self, forKey: .productsImageView)
+        self.nameProducts = try container.decode(String.self, forKey: .nameProducts)
+        self.openClose = try container.decode(String.self, forKey: .openClose)
+        self.delivery = try container.decode(String.self, forKey: .delivery)
+        self.madeOnTheWord = try container.decode(String.self, forKey: .madeOnTheWord)
+        self.time = try container.decode(String.self, forKey: .time)
+        self.cost = try container.decode(String.self, forKey: .cost)
+        self.rate = try container.decode(String.self, forKey: .rate)
+        self.distance = try container.decode(String.self, forKey: .distance)
+        let containerr = try decoder.container(keyedBy: CodingKeys.self)
+        let coder = JSONDecoder()
+        coder.keyDecodingStrategy = .convertFromSnakeCase
+    }
+}
+
+struct Products: Decodable {
+    let product: [Product]
+}

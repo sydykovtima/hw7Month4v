@@ -51,6 +51,7 @@ class ProductTableViewCell: UITableViewCell {
         costLable.textColor = .lightGray
         whereFromProducts.textColor = .lightGray
     }
+    
     @objc
     private func didTapOnImage() {
         print("Selections tapped")
@@ -61,43 +62,3 @@ class ProductTableViewCell: UITableViewCell {
         delegate?.didSelectionsProducts(item: products)
     }
 }
-
-
-let productJSON = """
-[{
-        "productsImageView": "Burger Craze",
-        "nameProducts": "Burger Craze",
-        "openClose": "Open ",
-        "delivery": "Free",
-        "madeOnTheWord": "American: Burgers",
-        "time": "1.5 km",
-        "cost": "minimum 10$",
-        "rate": "4.6(601)",
-        "distance": "15-20 min"
-},
-{
-        "productsImageView": "Vegetarian Pizza",
-        "nameProducts": "Vegetarian Pizza",
-        "openClose": "Open",
-        "delivery": "Free",
-        "madeOnTheWord": "American: Pizza",
-        "time": "1.5 km",
-        "cost": "minimum 10$",
-        "rate": "4.6(601)",
-        "distance": "15-20 min"
-}
-]
-"""
-struct Product: Decodable {
-    let productsImageView: String
-    let nameProducts: String
-    let openClose: String
-    let delivery: String
-    let madeOnTheWord: String
-    let time: String
-    let cost: String
-    let rate: String
-    let distance: String
-}
-
-//смыччсмвы

@@ -11,16 +11,17 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet private weak var searchProduct: UISearchBar!
     @IBOutlet private weak var typeOfOrderCollectionView: UICollectionView!
     @IBOutlet private weak var categoryCollectionView: UICollectionView!
     @IBOutlet private weak var productTableView: UITableView!
     
-    let productsinfo = Products().printAllInfo()
-    
     private var productArray: [Product] = []
-    
     private var categoryArray: [Category] = []
     private var orderType: [TypeOfOrder] = []
+    private var products: [Products] = []
+    private var isLoading = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCategoryCV()
@@ -32,7 +33,9 @@ class ViewController: UIViewController {
         fetchProducts()
         fetchcategory()
         fetchOrderType()
+        fetchProduct()
     }
+    
     private func configureCategoryCV() {
         productTableView.dataSource = self
         productTableView.delegate = self
@@ -52,26 +55,69 @@ class ViewController: UIViewController {
         , bundle: nil), forCellReuseIdentifier:
         ProductTableViewCell.reuseIdentifier)
     }
+    
     private func fetchProducts() {
-        do { productArray = try NetworkLayer.shared.fetchProducts() ?? []
+        do { productArray = try NetworkLayer.shared.fetchProducts()
             productTableView.reloadData()
         }catch {
             print("error \(error.localizedDescription)")
         }
     }
+    
     private func fetchcategory() {
-        do { categoryArray = try NetworkLayer.shared.fetchCategory() ?? []
+        do { categoryArray = try NetworkLayer.shared.fetchCategory()
            categoryCollectionView.reloadData()
         }catch {
             print("error \(error.localizedDescription)")
         }
     }
+    
     private func fetchOrderType() {
-        do { orderType = try NetworkLayer.shared.fetchOrderType() ?? []
+        do { orderType = try NetworkLayer.shared.fetchOrderType()
             typeOfOrderCollectionView.reloadData()
         } catch {
             print("error \(error.localizedDescription)")
         }
+    }
+    
+    private func fetchProduct() {
+        isLoading = true
+        
+        NetworkLayer.shared.fetchProducts { result in
+            self.isLoading = false
+            switch result {
+            case .success(let model):
+                self.productArray = model
+                DispatchQueue.main.async {
+                    self.productTableView.reloadData()
+                }
+            case .failure(let error):
+                self.showError(with: error)
+            }
+        }
+    }
+    
+    private func searchProduct(by word: String) {
+        isLoading = true
+        
+        NetworkLayer.shared.searchProducts(by: word) { result in
+            self.isLoading = false
+            switch result {
+            case .success(let model):
+                self.productArray = model
+                DispatchQueue.main.async {
+                    self.productTableView.reloadData()
+                }
+            case .failure(let error):
+                self.showError(with: error)
+            }
+        }
+    }
+    
+    private func showError(with message: Error) {
+        let alert = UIAlertController(title: "Error", message: message.localizedDescription, preferredStyle: .alert)
+        alert.addAction(.init(title: "Okay", style: .cancel))
+        present(alert, animated: true)
     }
 }
 
@@ -135,8 +181,6 @@ class ViewController: UIViewController {
         .reuseIdentifierForOrderType,
         for: indexPath) as! OrderTypeCollectionViewCell
         let model = orderType[indexPath.row]
-//                cell.backgroundColor = orderType[0].backGroundColorForText
-//                cell.backgroundColor = orderType[indexPath.row].backGroundColorForText
         cell.display(item: model)
         return cell
             }
@@ -162,18 +206,14 @@ extension ViewController: ProductsCellDelegate {
         let secondVC = storyboard?
         .instantiateViewController(withIdentifier: "second_vc"
         ) as! SecondViewController
-//        secondVC.product = item
         navigationController?.pushViewController(secondVC, animated: true)
     }
 }
 
-//extension ViewController: CreateSelections {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        didSelectSelection()
-//    }
-//
-//    func didSelectSelection() {
-//        let secondVC = storyboard?.instantiateViewController(withIdentifier: "second_vc")
-//        navigationController?.pushViewController(secondVC!, animated: true)
-//    }
-//}
+extension ViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if !isLoading {
+            searchProduct(by: searchText)
+        }
+    }
+}

@@ -22,38 +22,3 @@ class OrderTypeCollectionViewCell: UICollectionViewCell {
     }
 }
 
-let orderTypeJSON = """
-[{
-        "orderOfType": "Delivery",
-        "colorForText": "",
-        "backGroundColorForText": ""
-},
-{
-        "orderOfType": "Pick Up",
-        "colorForText": "",
-        "backGroundColorForText": ""
-},
-{
-        "orderOfType": "Catering",
-        "colorForText": "",
-        "backGroundColorForText": ""
-},
-{
-        "orderOfType": "Curbside",
-        "colorForText": "",
-        "backGroundColorForText": ""
-}
-]
-"""
-
-struct TypeOfOrder: Decodable {
-    let orderOfType: String
-//    let colorForText: UIColor
-//    let backGroundColorForText: UIColor
-}
- 
-
-
-
-
-
